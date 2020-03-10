@@ -11,10 +11,33 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My Awesome App")
 
-        label = QLabel("THIS IS AWESOME!!!")
-        label.setAlignment(Qt.AlignCenter)
+        layout = QVBoxLayout()
 
-        self.setCentralWidget(label)
+        widgets = [
+            QCheckBox,
+            QComboBox,
+            QDateEdit,
+            QDateTimeEdit,
+            QDial,
+            QDoubleSpinBox,
+            QFontComboBox,
+            QLCDNumber,
+            QLabel,
+            QLineEdit,
+            QProgressBar,
+            QPushButton,
+            QRadioButton,
+            QSlider,
+            QSpinBox,
+            QTimeEdit
+        ]
+
+        for w in widgets:
+            layout.addWidget(w())
+
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
 
         toolbar = QToolBar("My main toolbar")
         toolbar.setIconSize(QSize(16, 16))
@@ -44,13 +67,9 @@ class MainWindow(QMainWindow):
         # menu.setNativeManuBar(False)
         file_menu = menu.addMenu("&File")
         file_menu.addAction(button_action)
-
         file_menu.addSeparator()
-
         file_submenu = file_menu.addMenu("Submenu")
-
         file_menu.addAction(button_action2)
-
         file_submenu.addAction(button_action)
         file_submenu.addAction(button_action2)
 
