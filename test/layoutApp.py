@@ -21,20 +21,51 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My Awesome App")
 
-        # layout = QVBoxLayout()
-        # layout.addWidget( Color('red') )
-        # layout.addWidget( Color('green') )
-        # layout.addWidget( Color('blue') )
+        # layout1 = QVBoxLayout()
+        # layout2 = QHBoxLayout()
+        # # layout1.setContentsMargins(0,0,0,0)
+        # layout1.setSpacing(20)
+        # layout1.addWidget( Color('red') )
+        # layout1.addWidget( Color('green') )
+        # layout1.addLayout(layout2)
+        # layout1.addWidget( Color('blue') )
+        # layout2.addWidget( Color('yellow'))
+        # layout2.addWidget( Color('grey'))
+        # layout2.addWidget( Color('black'))
 
-        layout2 = QHBoxLayout()
-        layout2.addWidget( Color('yellow'))
-        layout2.addWidget( Color('grey'))
-        layout2.addWidget( Color('black'))
+        # layout = QGridLayout(
+        # layout.addWidget( Color('red'), 0, 0)
+        # layout.addWidget( Color('green'), 10, 10)
 
-        widget = QWidget()
-        # widget.setLayout(layout)
-        widget.setLayout(layout2)
-        self.setCentralWidget(widget)
+        # pageLayout = QVBoxLayout()
+        # button_layout = QHBoxLayout()
+        # layout = QStackedLayout()
+
+        # pageLayout.addLayout(button_layout)
+        # pageLayout.addLayout(layout)
+
+        # for n, color in enumerate(['red', 'green', 'blue', 'yellow']):      
+        #     btn = QPushButton( str(color) )
+        #     btn.pressed.connect( lambda n=n: layout.setCurrentIndex(n) )
+        #     button_layout.addWidget( btn )
+        #     layout.addWidget( Color(str(color)) )
+    
+
+        tabs = QTabWidget()
+        tabs.setDocumentMode(True)
+        tabs.setTabPosition(QTabWidget.East)
+        tabs.setMovable(True)
+
+        for n, color in enumerate(['red', 'green', 'blue', 'yellow']):      
+            tabs.addTab( Color(color), color)
+
+
+        # widget = QWidget()
+        # widget.setLayout(pageLayout)
+        # widget.setLayout(layout1)
+
+
+        self.setCentralWidget(tabs)
 
 
 
